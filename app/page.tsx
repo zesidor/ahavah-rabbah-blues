@@ -11,7 +11,7 @@ const [key, setKey] = useState(keys[0].name);
 const [scale, setScale] = useState(scales[0].name);
 const [tonality, settonality] = useState(tonalities[0].name);
 
-const [sd, setSd] = useState({open_e_one: "#fff",f_one_e_one: "#fff",f_sharp_one_e_one: "#fff",g_e_one: "#fff",g_sharp_e_one: "#fff", a_e_one: "#fff",a_sharp_e_one: "#fff", b_e_one: "#fff", c_e_one: "#fff", c_sharp_e_one: "#fff", d_e_one: "#fff",d_sharp_e_one: "#fff",e_e_one: "#fff",f_two_e_one: "#fff",f_sharp_two_e_one: "#fff",open_a: "#fff",a_sharp_one_a: "#fff",b_one_a: "#fff",c_a: "#fff",c_sharp_a: "#fff",d_a: "#fff",d_sharp_a: "#fff",e_a: "#fff",f_a: "#fff",f_sharp_a: "#fff",g_a: "#fff",g_sharp_a:"#fff",a_a: "#fff",a_sharp_two_a: "#fff",b_two_a: "#fff",open_d: "#fff",d_sharp_one_d: "#fff",e_one_d: "#fff",f_d: "#fff",f_sharp_d: "#fff",g_d: "#fff",g_sharp_d: "#fff",a_d: "#fff",a_sharp_d: "#fff",b_d: "#fff",c_d: "#fff",c_sharp_d: "#fff",d_d: "#fff",d_sharp_two_d: "#fff",e_two_d: "#fff",open_g: "#fff",g_sharp_one_g: "#fff",a_one_g: "#fff",a_sharp_g: "#fff",b_g: "#fff",c_g: "#fff",c_sharp_g: "#fff",d_g: "#fff",d_sharp_g: "#fff",e_g: "#fff",f_g: "#fff",f_sharp_g: "#fff",g_g: "#fff",g_sharp_two_g: "#fff",a_two_g: "#fff",open_b: "#fff",c_one_b: "#fff",c_sharp_one_b: "#fff",d_b: "#fff",d_sharp_b: "#fff",e_b: "#fff",f_b: "#fff",f_sharp_b: "#fff",g_b: "#fff",g_sharp_b: "#fff",a_b: "#fff",a_sharp_b: "#fff",b_b: "#fff",c_two_b: "#fff",c_sharp_two_b: "#fff",open_e_two: "#fff",f_one_e_two: "#fff",f_sharp_one_e_two: "#fff",g_e_two: "#fff",g_sharp_e_two: "#fff",a_e_two: "#fff",a_sharp_e_two: "#fff",b_e_two: "#fff",c_e_two: "#fff",c_sharp_e_two: "#fff",d_e_two: "#fff",d_sharp_e_two: "#fff",e_e_two: "#fff",f_two_e_two: "#fff",f_sharp_two_e_two: "#fff"}); 
+const [sd, setSd] = useState({open_e_one: "#fff",f_one_e_one: "#fff",f_sharp_one_e_one: "#fff",g_e_one: "#fff",g_sharp_e_one: "#fff", a_e_one: "#fff",a_sharp_e_one: "#fff", b_e_one: "#fff", c_e_one: "#fff", c_sharp_e_one: "#fff", d_e_one: "#fff",d_sharp_e_one: "#fff",e_e_one: "#fff",f_two_e_one: "#fff",f_sharp_two_e_one: "#fff",open_a: "#fff",a_sharp_one_a: "#fff",b_one_a: "#fff",c_a: "#fff",c_sharp_a: "#fff",d_a: "#fff",d_sharp_a: "#fff",e_a: "#fff",f_a: "#fff",f_sharp_a: "#fff",g_a: "#fff",g_sharp_a:"#fff",a_a: "#fff",a_sharp_two_a: "#fff",b_two_a: "#fff",open_d: "#fff",d_sharp_one_d: "#fff",e_one_d: "#fff",f_d: "#fff",f_sharp_d: "#fff",g_d: "#fff",g_sharp_d: "#fff",a_d: "#fff",a_sharp_d: "#fff",b_d: "#fff",c_d: "#fff",c_sharp_d: "#fff",d_d: "#fff",d_sharp_two_d: "#fff",e_two_d: "#fff",open_g: "#fff",g_sharp_one_g: "#fff",a_one_g: "#fff",a_sharp_g: "#fff",b_g: "#fff",c_g: "#fff",c_sharp_g: "#fff",d_g: "#fff",d_sharp_g: "#fff",e_g: "#fff",f_g: "#fff",f_sharp_g: "#fff",g_g: "#fff",g_sharp_two_g: "#fff",a_two_g: "#fff",open_b: "#fff",c_one_b: "#fff",c_sharp_one_b: "#fff",d_b: "#fff",d_sharp_b: "#fff",e_b: "#fff",f_b: "#fff",f_sharp_b: "#fff",g_b: "#fff",g_sharp_b: "#fff",a_b: "#fff",a_sharp_b: "#fff",b_b: "#fff",c_two_b: "#fff",c_sharp_two_b: "#fff",open_e_two: "#fff",f_one_e_two: "#fff",f_sharp_one_e_two: "#fff",g_e_two: "#fff",g_sharp_e_two: "#fff",a_e_two: "#fff",a_sharp_e_two: "#fff",b_e_two: "#fff",c_e_two: "#fff",c_sharp_e_two: "#fff",d_e_two: "#fff",d_sharp_e_two: "#fff",e_e_two: "#fff",f_two_e_two: "#fff",f_sharp_two_e_two: "#fff",mnemonic:""}); 
     useEffect(() => {
       
       fetch(`/api/${key}/${scale}/${tonality}`).then(async function (response) {
@@ -21,6 +21,7 @@ const [sd, setSd] = useState({open_e_one: "#fff",f_one_e_one: "#fff",f_sharp_one
       console.log(error);
       })
   }, [key,scale,tonality]);
+  
 
 
 return (
@@ -47,11 +48,13 @@ return (
         Spanish Gypsy
       </span>
     </div>
-
+ {scale === "blues" && (
+  <>
     {/* divider */}
     <span className="text-zinc-400 dark:text-zinc-500">|</span>
 
     {/* tonalities toggle */}
+   
     <div className="flex items-center gap-2">
       <span className="text-sm text-zinc-600 dark:text-zinc-300">Major</span>
 
@@ -70,7 +73,10 @@ return (
 
       <span className="text-sm text-zinc-600 dark:text-zinc-300">Minor</span>
     </div>
+    </>
+    )}
   </div>
+       
 
   {/*key buttons*/}
   <div className="flex space-x-2">
@@ -332,6 +338,7 @@ return (
   <text x="89.45%" y="77.25%"  className='notetext nopointer'>F</text>
   <text x="96.05%" y="77.25%"  className='notetext nopointer'>G♭</text>
 </svg>
+<p className="text-2xl text-center pt-8">{sd.mnemonic}</p>
 </>
   );
 }
